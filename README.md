@@ -36,7 +36,7 @@ Get/emails/<str:mailbox>|
 
 Sending a GET| request to /emails/<mailbox>| where <mailbox>| is either inbox|, sent|, or archive| will return back to you (in JSON form) a list of all emails in that mailbox, in reverse chronological order. For example, if you send a GET| request to /emails/inbox|, you might get a JSON response like the below (representing two emails):
 
-`
+``
 [
     {
         "id": 100,
@@ -59,7 +59,7 @@ Sending a GET| request to /emails/<mailbox>| where <mailbox>| is either inbox|, 
         "archived": false
     }
 ]
-`
+``
 
 ## How to Use?
 This is to be run using Django and to make any neccessary migrations  
