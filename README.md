@@ -32,7 +32,7 @@ To get, send, and update emails this application’s uses its own APIs.
 
 Querying through emails:
 
-Get/emails/<str:mailbox>|
+|Get/emails/<str:mailbox>|
 
 Sending a GET| request to /emails/<mailbox>| where <mailbox>| is either inbox|, sent|, or archive| will return back to you (in JSON form) a list of all emails in that mailbox, in reverse chronological order. For example, if you send a GET| request to /emails/inbox|, you might get a JSON response like the below (representing two emails):
 
