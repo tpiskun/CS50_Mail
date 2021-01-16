@@ -32,9 +32,9 @@ To get, send, and update emails this application’s uses its own APIs.
 
 Querying through emails:
 
-|Get/emails/<str:mailbox>|
+`Get/emails/<str:mailbox>`
 
-Sending a GET| request to /emails/<mailbox>| where <mailbox>| is either inbox|, sent|, or archive| will return back to you (in JSON form) a list of all emails in that mailbox, in reverse chronological order. For example, if you send a GET| request to /emails/inbox|, you might get a JSON response like the below (representing two emails):
+Sending a `GET` request to `/emails/<mailbox>` where `<mailbox>` is either `inbox`, `sent`, or `archive` will return back to you (in JSON form) a list of all emails in that mailbox, in reverse chronological order. For example, if you send a `GET` request to `/emails/inbox`, you might get a JSON response like the below (representing two emails):
 
 ```
 [
@@ -60,6 +60,34 @@ Sending a GET| request to /emails/<mailbox>| where <mailbox>| is either inbox|, 
     }
 ]
 ```
+
+Each Get will return a unique email ID as well as the sender, recipients, subject, body, timestamp, read, and archived values for each respective email. 
+
+`GET /emails/<int:email_id>`
+
+Sending a `GET` request to `/emails/email_id` where `email_id` is an integer id for an email will return a JSON representation of the email, like the below:
+
+```
+{
+        "id": 100,
+        "sender": "foo@example.com",
+        "recipients": ["bar@example.com"],
+        "subject": "Hello!",
+        "body": "Hello, world!",
+        "timestamp": "Jan 2 2020, 12:00 AM",
+        "read": false,
+        "archived": false
+}
+```
+Note that if the email doesn’t exist, or if the user does not have access to the email, the route instead return a 404 Not Found error with a JSON response of `{"error": "Email not found."}`.
+
+`POST/emails`
+To send an email, you can send a POST request to the `/emails route`. The route requires three pieces of data to be submitted: a recipients value (a comma-separated string of all users to send an email to), a subject string, and a body string.
+
+The recipient must have a valid email. If an email does not exist you’ll get a JSON response of `{"error": "User with email baz@example.com does not exist."}`
+
+`PUT /emails/<int:email_id>`
+To mark an email as read/unread or as archived/unarchived use PUT request to `/emails/<email_id>` where `email_id` is the id of the email you’re trying to modify
 
 ## How to Use?
 This is to be run using Django and to make any neccessary migrations  
