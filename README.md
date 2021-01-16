@@ -89,20 +89,23 @@ The recipient must have a valid email. If an email does not exist you’ll get a
 `PUT /emails/<int:email_id>`
 To mark an email as read/unread or as archived/unarchived use PUT request to `/emails/<email_id>` where `email_id` is the id of the email you’re trying to modify
 
+Furthermore, since this project uses Django, I used the Django documentation to research and clarify any additional features and functionality used in this project:
+  https://docs.djangoproject.com/en/3.0/
+  
 ## How to Use?
-This is to be run using Django and to make any neccessary migrations  
+This is to be run just like any other Django application. After locating the manage.py file in the application directory, run the following commands in terminal:
 
-To run the application: 
-```
-$ python manage.py runserver
-```
-For migrations:
-```
-$ python manage.py makemigrations mail
-```
-```
-$ python manage.py migrate
-```
+ To run the application: 
+ ```
+ $ python manage.py runserver
+ ```
+ For migrations:
+ ```
+ $ python manage.py makemigrations mail
+ ```
+ ```
+ $ python manage.py migrate
+ ```
 
 ## Credits
 Source Code provided by Harvard's CS50 curriculum and professor Brian Yu.
